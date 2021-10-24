@@ -18,13 +18,9 @@ class BookListRecyclerViewAdapter(
         private val mListener: OnListFragmentInteractionListener?)
     : RecyclerView.Adapter<BookListRecyclerViewAdapter.ViewHolder>() {
 
-    private val mOnClickListener: View.OnClickListener
-
-    init {
-        mOnClickListener = View.OnClickListener { v ->
-            val item = v.tag as Book
-            mListener?.onListFragmentInteraction(item)
-        }
+    private val mOnClickListener: View.OnClickListener = View.OnClickListener { v ->
+        val item = v.tag as Book
+        mListener?.onListFragmentInteraction(item)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -39,7 +35,6 @@ class BookListRecyclerViewAdapter(
         holder.isbn.text = item.isbn
         holder.price.text = item.price + " €"
 
-        holder.description.text = item.description
         Picasso.get().load(item.cover).into(holder.cover)
 
         with(holder.mView) {
@@ -55,8 +50,5 @@ class BookListRecyclerViewAdapter(
         val isbn: TextView = mView.book_item_isbn
         val price: TextView = mView.book_item_price
         val cover: ImageView = mView.book_item_cover
-        val description: TextView = mView.book_item_description
-
-
     }
 }

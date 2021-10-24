@@ -26,6 +26,7 @@ class BookDetailsFragment : Fragment() {
         view.book_detail_title.text = book?.title
         view.book_detail_isbn.text = book?.isbn
         view.book_detail_price.text = book?.price + " €"
+        view.book_detail_description.text = book?.description?.get(0)
 
         book?.apply { Picasso.get().load(this.cover).into(view.book_detail_cover) }
 
